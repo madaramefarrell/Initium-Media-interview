@@ -1,0 +1,40 @@
+version: "3"
+services:
+  db:
+    image: postgres:14
+    volumes:
+      - ./db:/db:cached
+      - ./docker/postgresql/db-init-scripts:/docker-entrypoint-initdb.d:cached
+      - db_data:/var/lib/postgresql/data:cached
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+
+  web:
+    image: initium-media-interview
+    build:
+      context: ./
+      dockerfile: ./docker/django/Dockerfile
+    command: sh /code/docker/django/run_web.sh
+    working_dir: /code
+    volumes:
+      - .:/code:delegated
+    ports:
+      - "8000:8000"
+    links:
+      - db
+    depends_on:
+      - db 
+
+  nginx:
+    build:
+      context: ./nginx/development
+      dockerfile: ./Dockerfile
+    restart: unless-stopped
+    ports:
+      - 80:80
+    depends_on:
+      - web
+
+volumes:
+  db_data: {}
+  python_lib: {}
