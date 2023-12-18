@@ -73,9 +73,10 @@ Local include 3 users:
 
 2. Employee user `lily` with password `0000`
 
-    ![lily]('/Users/ian/Desktop/lily')
+    ![lily](https://github.com/madaramefarrell/Initium-Media-interview/assets/5953450/b5e97b7d-ca27-4ff8-b222-b130adfe2857)
 
 3. Not employee user `john` with password `0000`
 
-    ![john]('/Users/ian/Desktop/john')
+   ![john](https://github.com/madaramefarrell/Initium-Media-interview/assets/5953450/3169df38-d5bb-484d-8502-ec8b72acc985)
+
     
